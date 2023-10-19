@@ -179,8 +179,8 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="EF\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
       <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
     <Content Include="EF\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
