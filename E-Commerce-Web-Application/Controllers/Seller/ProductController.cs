@@ -14,13 +14,21 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         [HttpGet]
         public ActionResult addProduct()
         {
+            // show all html field
             return View();
         }
 
         [HttpPost]
         public ActionResult addProduct(Product product)
         {
-            return View(product);
+            // after save those fields
+            var db = new E_Commerce();
+            db.Products.Add(product);
+            db.SaveChanges();
+            //return View(product);
+
+            // return to product details page 
+            return RedirectToAction("productDetails");
         }
 
         public ActionResult updateProductDetails()
