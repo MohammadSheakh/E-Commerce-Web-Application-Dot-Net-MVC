@@ -9,10 +9,10 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>addProduct</title>
+    <title>updateOneProductDetails</title>
 </head>
 <body>
-    @using (Html.BeginForm()) 
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
         
@@ -20,6 +20,8 @@
             <h4>Product</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+    
             <div class="form-group">
                 @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -36,13 +38,13 @@
                 </div>
             </div>
     
-            @*<div class="form-group">
+            <div class="form-group">
                 @Html.LabelFor(model => model.productImage, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.productImage, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.productImage, "", new { @class = "text-danger" })
                 </div>
-            </div>*@
+            </div>
     
             <div class="form-group">
                 @Html.LabelFor(model => model.rating, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -76,42 +78,40 @@
                 </div>
             </div>
     
-            @*<div class="form-group">
+            <div class="form-group">
                 @Html.LabelFor(model => model.createdAt, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.createdAt, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.createdAt, "", new { @class = "text-danger" })
                 </div>
-            </div>*@
-    
-            <div class="form-group">
-                @*🔰⚫ekhane select er maddhome brand id name provide korte hobe .. 
-                but back end e value jabe*@ 
-                @*@Html.LabelFor(model => model.brandId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.brandId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.brandId, "", new { @class = "text-danger" })
-                </div>*@
             </div>
     
             <div class="form-group">
-                @*@Html.LabelFor(model => model.categoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.brandId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.brandId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.brandId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.categoryId, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.categoryId, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.categoryId, "", new { @class = "text-danger" })
-                </div>*@
+                </div>
             </div>
     
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Save" class="btn btn-default" />
                 </div>
             </div>
         </div>
     }
     
     <div>
-        @Html.ActionLink("Back to List", "showAllProductsDetails")
+        @Html.ActionLink("Back to List", "Index")
     </div>
 </body>
 </html>
