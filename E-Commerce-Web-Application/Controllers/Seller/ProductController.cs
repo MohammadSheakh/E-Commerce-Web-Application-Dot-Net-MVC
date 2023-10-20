@@ -48,6 +48,21 @@ namespace E_Commerce_Web_Application.Controllers.Seller
             return View(data);
         }
 
+
+        [HttpGet]
+        public ActionResult showOneProductDetails(int? id)
+        {
+
+            var db = new E_Commerce1();
+            //First LINQ ..
+            var data = (from product in db.Products
+                        where product.id == id
+                        select product).SingleOrDefault();
+
+            return View(data);
+        }
+
+
         [HttpGet]
         public ActionResult updateOneProductDetails(int? id)
         {
@@ -85,27 +100,44 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         // chillpc\sqlexpress
 
         [HttpGet]
-        public ActionResult deleteProduct(Product product)
+        public ActionResult deleteProduct(int? id)
         {
-            
+            var db = new E_Commerce1();
+            var product = db.Products.Find(id);
+            // retriving done 
+            if(product == null)
+            {
+                // ⚫🔗🔰 ProductNotFound Page create korte hobe 
+                // return RedirectToAction("ProductNotFound");
+                return RedirectToAction("showAllProductsDetails");
+            }
+            // if product is found
             return View(product);
-            //return RedirectToAction("showAllProductsDetails");
+           
         }
 
-        [HttpDelete]
-        public ActionResult deleteProduct(int? id)
+        [HttpPost]
+        [ActionName("deleteProduct")]
+        public ActionResult deleteAProduct(int id)
         {
 
             var db = new E_Commerce1();
             //First LINQ ..
-            var data = (from product in db.Products
+            var productFound = (from product in db.Products
                         where product.id == id
                         select product).SingleOrDefault();
 
-            var extractProduct = db.Products.Find(data.id);
-            db.Products.Remove(extractProduct);
-            return View();
-            //return RedirectToAction("showAllProductsDetails");
+            //var extractProduct = db.Products.Find(productFound.id);
+
+            if (productFound == null)
+            {
+                return RedirectToAction("ProductNotFound");
+            }
+
+            db.Products.Remove(productFound);
+            db.SaveChanges();
+            
+            return RedirectToAction("showAllProductsDetails");
         }
     }
 }
