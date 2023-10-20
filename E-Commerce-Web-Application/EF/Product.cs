@@ -11,10 +11,13 @@ namespace E_Commerce_Web_Application.EF
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Product
     {
+        
         public int id { get; set; }
+        [Required]
         public string name { get; set; }
         public string details { get; set; }
         public string productImage { get; set; }
@@ -22,7 +25,7 @@ namespace E_Commerce_Web_Application.EF
         public string price { get; set; }
         public string availableQuantity { get; set; }
         public string lowestQuantityToStock { get; set; }
-        public string createdAt { get; set; }
+        public Nullable<System.DateTime> createdAt { get; set; }
         public Nullable<int> brandId { get; set; }
         public Nullable<int> categoryId { get; set; }
     

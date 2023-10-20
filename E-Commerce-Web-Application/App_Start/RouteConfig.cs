@@ -16,6 +16,12 @@ namespace E_Commerce_Web_Application
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Product", action = "showAllProductsDetails", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Not Default",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

@@ -14,9 +14,6 @@ namespace E_Commerce_Web_Application.Controllers.Seller
             return View();
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
+       
     }
 }

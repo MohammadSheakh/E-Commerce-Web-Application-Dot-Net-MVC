@@ -31,7 +31,7 @@
           <Property Name="price" Type="nchar" MaxLength="10" />
           <Property Name="availableQuantity" Type="nchar" MaxLength="10" />
           <Property Name="lowestQuantityToStock" Type="nchar" MaxLength="10" />
-          <Property Name="createdAt" Type="nchar" MaxLength="10" />
+          <Property Name="createdAt" Type="datetime" />
           <Property Name="brandId" Type="int" />
           <Property Name="categoryId" Type="int" />
         </EntityType>
@@ -105,7 +105,7 @@
           <Property Name="price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="availableQuantity" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="lowestQuantityToStock" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="createdAt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="createdAt" Type="DateTime" Precision="3" />
           <Property Name="brandId" Type="Int32" />
           <Property Name="categoryId" Type="Int32" />
           <NavigationProperty Name="Brand" Relationship="Self.FK_Products_Brands" FromRole="Products" ToRole="Brands" />
@@ -135,7 +135,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="E_Commerce" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="E_Commerce1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Brands" EntityType="Self.Brand" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Products" EntityType="Self.Product" />
@@ -153,7 +153,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="E_Commerce">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="E_Commerce1">
           <EntitySetMapping Name="Brands">
             <EntityTypeMapping TypeName="Model.Brand">
               <MappingFragment StoreEntitySet="Brands">
