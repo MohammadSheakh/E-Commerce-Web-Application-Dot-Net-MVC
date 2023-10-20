@@ -15,6 +15,9 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         public ActionResult addProduct()
         {
             // show all html field
+            var db = new E_Commerce1();
+            ViewBag.Brands = db.Brands.ToList();
+            ViewBag.Categories = db.Categories.ToList();
             return View();
         }
 
@@ -72,6 +75,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
             var data = (from product in db.Products
                         where product.id == id
                         select product).SingleOrDefault();
+
 
             return View(data);
         }
