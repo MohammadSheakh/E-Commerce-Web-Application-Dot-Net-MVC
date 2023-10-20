@@ -124,7 +124,6 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         [ActionName("deleteProduct")]
         public ActionResult deleteAProduct(int id)
         {
-
             var db = new E_Commerce1();
             //First LINQ ..
             var productFound = (from product in db.Products
