@@ -13,10 +13,10 @@ namespace E_Commerce_Web_Application.EF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class E_Commerce1 : DbContext
+    public partial class Entities3 : DbContext
     {
-        public E_Commerce1()
-            : base("name=E_Commerce1")
+        public Entities3()
+            : base("name=Entities3")
         {
         }
     
@@ -27,6 +27,12 @@ namespace E_Commerce_Web_Application.EF
     
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<OrderItemProduct> OrderItemProducts { get; set; }
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Seller> Sellers { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

@@ -12,31 +12,22 @@ namespace E_Commerce_Web_Application.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public User()
         {
-            this.OrderItems = new HashSet<OrderItem>();
+            this.Orders = new HashSet<Order>();
         }
     
         public int id { get; set; }
         public string name { get; set; }
-        public string details { get; set; }
-        public string productImage { get; set; }
-        public string rating { get; set; }
-        public string price { get; set; }
-        public string availableQuantity { get; set; }
-        public string lowestQuantityToStock { get; set; }
-        public Nullable<System.DateTime> createdAt { get; set; }
-        public Nullable<int> brandId { get; set; }
-        public Nullable<int> categoryId { get; set; }
-        public Nullable<int> sellerId { get; set; }
+        public string password { get; set; }
+        public string email { get; set; }
+        public string phoneNumber { get; set; }
+        public string address { get; set; }
     
-        public virtual Brand Brand { get; set; }
-        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderItem> OrderItems { get; set; }
-        public virtual Seller Seller { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

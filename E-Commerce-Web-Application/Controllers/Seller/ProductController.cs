@@ -6,6 +6,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+// 3 category 10 product 
+
+
+// user can order product 
+// user entity .. 
+// order entity ..  design database .. to keep user and order 
+
+// Feature ->
+// 1. add to cart  // database e insert hobe na 
+// 2. show cart (product and bill amount , assume qty 1) // database e  insert hobe na .. 
+
+// 3. place order ( database insert hobe .. )
+
 namespace E_Commerce_Web_Application.Controllers.Seller
 {
     public class ProductController : Controller
@@ -15,7 +28,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         public ActionResult addProduct()
         {
             // show all html field
-            var db = new E_Commerce1();
+            var db = new Entities3();
             ViewBag.Brands = db.Brands.ToList();
             ViewBag.Categories = db.Categories.ToList();
             return View();
@@ -25,7 +38,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         public ActionResult addProduct(Product product)
         {
             // after save those fields
-            var db = new E_Commerce1();
+            var db = new Entities3();
 
             if (ModelState.IsValid)
             {
@@ -46,7 +59,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         [HttpGet]
         public ActionResult showAllProductsDetails ()
         {
-            var db = new E_Commerce1();
+            var db = new Entities3();
             var data = db.Products.ToList();
             return View(data);
         }
@@ -56,12 +69,11 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         public ActionResult showOneProductDetails(int? id)
         {
 
-            var db = new E_Commerce1();
+            var db = new Entities3();
             //First LINQ ..
             var data = (from product in db.Products
                         where product.id == id
                         select product).SingleOrDefault();
-
             return View(data);
         }
 
@@ -70,7 +82,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         public ActionResult updateOneProductDetails(int? id)
         {
             
-            var db = new E_Commerce1();
+            var db = new Entities3();
             //First LINQ ..
             var data = (from product in db.Products
                         where product.id == id
@@ -82,7 +94,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         [HttpPost]
         public ActionResult updateOneProductDetails(Product product)
         {
-            var db = new E_Commerce1();
+            var db = new Entities3();
             //First LINQ ..
             //var data = (from product in db.Products
             //            where product.id == id
@@ -106,7 +118,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         [HttpGet]
         public ActionResult deleteProduct(int? id)
         {
-            var db = new E_Commerce1();
+            var db = new Entities3();
             var product = db.Products.Find(id);
             // retriving done 
             if(product == null)
@@ -124,7 +136,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         [ActionName("deleteProduct")]
         public ActionResult deleteAProduct(int id)
         {
-            var db = new E_Commerce1();
+            var db = new Entities3();
             //First LINQ ..
             var productFound = (from product in db.Products
                         where product.id == id

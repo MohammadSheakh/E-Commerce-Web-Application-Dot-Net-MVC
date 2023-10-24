@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+    //var cart = ViewBag.Cart as List<E_Commerce_Web_Application.EF.Product>;
+    @model List<E_Commerce_Web_Application.EF.Product>
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>showCart</title>
+</head>
+<body>
+    <div>
+
+
+        <table border="1">
+            <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+
+
+            </tr>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    
+                    <tr>
+                        <td>@item.id</td>
+                        <td>@item.name</td>
+                        <td>@item.price</td>
+                        <!-- Add more table cells for other product properties -->
+                    </tr>
+                }
+            }
+
+        </table>
+
+
+        @Html.ActionLink("Place Order", "placeOrder")
+        @Html.ActionLink("Back To Product List", "showAllProductsDetails")
+
+
+    </div>
+</body>
+</html>
