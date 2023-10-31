@@ -1,4 +1,4 @@
-﻿@model E_Commerce_Web_Application.DTOs.ProductDTO
+﻿@model E_Commerce_Web_Application.EF.Product
 
 @{
     Layout = null;
@@ -13,7 +13,7 @@
 </head>
 <body>
     <div>
-        <h4>ProductDTO</h4>
+        <h4>Product</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -94,14 +94,6 @@
     
             <dd>
                 @Html.DisplayFor(model => model.categoryId)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.sellerId)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.sellerId)
             </dd>
     
         </dl>

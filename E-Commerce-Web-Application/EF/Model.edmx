@@ -19,14 +19,6 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="OrderItemProduct">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="orderItemId" Type="int" />
-          <Property Name="productId" Type="int" />
-        </EntityType>
         <EntityType Name="OrderItems">
           <Key>
             <PropertyRef Name="id" />
@@ -192,7 +184,6 @@
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OrderItemProduct" EntityType="Self.OrderItemProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItems" EntityType="Self.OrderItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
@@ -248,14 +239,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories1" FromRole="Categories" ToRole="Products" />
-        </EntityType>
-        <EntityType Name="OrderItemProduct">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="orderItemId" Type="Int32" />
-          <Property Name="productId" Type="Int32" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -434,7 +417,6 @@
         <EntityContainer Name="Entities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Brands" EntityType="Self.Brand" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
-          <EntitySet Name="OrderItemProducts" EntityType="Self.OrderItemProduct" />
           <EntitySet Name="OrderItems" EntityType="Self.OrderItem" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Products" EntityType="Self.Product" />
@@ -489,15 +471,6 @@
               <MappingFragment StoreEntitySet="Categories">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderItemProducts">
-            <EntityTypeMapping TypeName="Model.OrderItemProduct">
-              <MappingFragment StoreEntitySet="OrderItemProduct">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="orderItemId" ColumnName="orderItemId" />
-                <ScalarProperty Name="productId" ColumnName="productId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

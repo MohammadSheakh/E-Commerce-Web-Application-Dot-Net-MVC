@@ -1,4 +1,4 @@
-﻿@model IEnumerable<E_Commerce_Web_Application.DTOs.ProductDTO>
+﻿@model IEnumerable<E_Commerce_Web_Application.EF.Product>
 
 @{
     Layout = null;
@@ -13,7 +13,7 @@
 </head>
 <body>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "addProduct")
     </p>
     <table class="table">
         <tr>
@@ -46,9 +46,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.categoryId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.sellerId)
             </th>
             <th></th>
         </tr>
@@ -86,12 +83,9 @@
                 @Html.DisplayFor(modelItem => item.categoryId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.sellerId)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "updateOneProductDetails", new { id = item.id }) |
-                @Html.ActionLink("Details", "showOneProductDetails", new { id = item.id }) |
-                @Html.ActionLink("Delete", "deleteProduct", new { id = item.id })
+                @Html.ActionLink("Edit", "updateOneProductDetails", new { id=item.id }) |
+                @Html.ActionLink("Details", "showOneProductDetails", new { id=item.id }) |
+                @Html.ActionLink("Delete", "deleteProduct", new { id=item.id })
             </td>
         </tr>
     }

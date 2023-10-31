@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -133,6 +136,18 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Seller\ProductController.cs" />
     <Compile Include="Controllers\Seller\SellerController.cs" />
+    <Compile Include="DTOs\Order\OrderDTO.cs" />
+    <Compile Include="DTOs\Order\OrderItemDTO.cs" />
+    <Compile Include="DTOs\Order\OrderOrderItemsDTO.cs" />
+    <Compile Include="DTOs\Order\ProductOrderItemsDTO.cs" />
+    <Compile Include="DTOs\Order\SellerOrdersDTO.cs" />
+    <Compile Include="DTOs\Product\BrandDTO.cs" />
+    <Compile Include="DTOs\Product\BrandProductsDTO.cs" />
+    <Compile Include="DTOs\Product\CategoryDTO.cs" />
+    <Compile Include="DTOs\Product\CategoryProductsDTO.cs" />
+    <Compile Include="DTOs\Product\ProductDTO.cs" />
+    <Compile Include="DTOs\Seller\SellerDTO.cs" />
+    <Compile Include="DTOs\Product\SellerProductsDTO.cs" />
     <Compile Include="EF\Brand.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -158,9 +173,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\OrderItem.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EF\OrderItemProduct.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\Product.cs">
@@ -271,13 +283,16 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Seller\Index.cshtml" />
-    <Content Include="Views\Product\addProduct.cshtml" />
-    <Content Include="Views\Product\showAllProductsDetails.cshtml" />
-    <Content Include="Views\Product\updateOneProductDetails.cshtml" />
-    <Content Include="Views\Product\deleteProduct.cshtml" />
-    <Content Include="Views\Product\showOneProductDetails.cshtml" />
     <Content Include="Views\User\showAllProductsDetails.cshtml" />
     <Content Include="Views\User\showCart.cshtml" />
+    <Content Include="Views\Product\Without DTO\WupdateOneProductDetails.cshtml" />
+    <Content Include="Views\Product\Without DTO\WshowOneProductDetails.cshtml" />
+    <Content Include="Views\Product\Without DTO\WshowAllProductsDetails.cshtml" />
+    <Content Include="Views\Product\Without DTO\WdeleteProduct.cshtml" />
+    <Content Include="Views\Product\Without DTO\WaddProduct.cshtml" />
+    <Content Include="Views\Product\addProduct.cshtml" />
+    <Content Include="Views\Product\showAllProductsDetails.cshtml" />
+    <Content Include="Views\Product\showOneProductDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
