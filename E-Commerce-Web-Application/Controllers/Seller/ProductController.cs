@@ -86,6 +86,42 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         }
 
 
+        //for List
+        public List<TDestination> ConvertForList<TSource, TDestination>(List<TSource> sourceListFromDB)
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<TSource, TDestination>();
+            });
+
+            var mapper = new Mapper(config);
+            return mapper.Map<List<TDestination>>(sourceListFromDB);
+        }
+
+        //for Single Instance
+        public TDestination ConvertForSingleInstance<TSource, TDestination>(TSource sourceFromDB)
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<TSource, TDestination>();
+            });
+
+            var mapper = new Mapper(config);
+            return mapper.Map<TDestination>(sourceFromDB);
+        }
+
+        //for Array
+        public TDestination[] ConvertForMap<TSource, TDestination>(TSource[] sourceFromDB)
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<TSource, TDestination>();
+            });
+
+            var mapper = new Mapper(config);
+            return mapper.Map<TDestination[]>(sourceFromDB);
+        }
+
         // GET: Product
         [HttpGet]
         public ActionResult addProduct()
@@ -127,41 +163,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         }
         
 
-        //for List
-        public List<TDestination> ConvertForList<TSource, TDestination>(List<TSource> sourceListFromDB)
-        {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<TSource, TDestination>();
-            });
-
-            var mapper = new Mapper(config);
-            return mapper.Map<List<TDestination>>(sourceListFromDB);
-        }
-
-        //for Single Instance
-        public TDestination ConvertForSingleInstance<TSource, TDestination>(TSource sourceFromDB)
-        {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<TSource, TDestination>();
-            });
-
-            var mapper = new Mapper(config);
-            return mapper.Map<TDestination>(sourceFromDB);
-        }
-
-        //for Array
-        public TDestination[] ConvertForMap<TSource, TDestination>(TSource[] sourceFromDB)
-        {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<TSource, TDestination>();
-            });
-
-            var mapper = new Mapper(config);
-            return mapper.Map<TDestination[]>(sourceFromDB);
-        }
+        
 
 
 
@@ -211,8 +213,8 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         }
 
 
-        [HttpGet]
-        public ActionResult showOneProductDetails(int? id)
+        [HttpGet] // View with DTO - status [working]
+        public ActionResult showOneProductDetails(int? id = 1)
         {
 
             var db = new Entities3();
@@ -229,7 +231,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         }
 
 
-        [HttpGet]
+        [HttpGet] // View with DTO - status [working]
         public ActionResult updateOneProductDetails(int? id)
         {
             
@@ -244,7 +246,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
             //return View(data);
             return View(convertedProduct);
         }
-        [HttpPost]
+        [HttpPost] // View with DTO - status [working]
         public ActionResult updateOneProductDetails(/*Product */ ProductDTO product)
         {
             // 🔗🔰 accha ekhane ki modelstate.isvalid kora lagbe na ? 
@@ -261,8 +263,12 @@ namespace E_Commerce_Web_Application.Controllers.Seller
             //extractProduct.name = product.name; // this is how, you should update each field
 
             // /// db.Entry(extractProduct).CurrentValues.SetValues(product);
-            db.Entry(extractProduct).CurrentValues.SetValues(Convert(product));
+            // use Convert Method 
+            // ///db.Entry(extractProduct).CurrentValues.SetValues(Convert(product));
             // Convert DTO to DB 
+
+            // lets use AutoMapper 
+            db.Entry(extractProduct).CurrentValues.SetValues(ConvertForSingleInstance<ProductDTO , Product>(product));
 
             db.SaveChanges();
 
@@ -274,6 +280,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         [HttpGet]
         public ActionResult deleteProduct(int? id)
         {
+
             var db = new Entities3();
             var product = db.Products.Find(id);
             // retriving done 
@@ -287,7 +294,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
             return View(product);
            
         }
-
+        //🔰🔗 ekhane ki DTO er kono kaj ase ? 
         [HttpPost]
         [ActionName("deleteProduct")]
         public ActionResult deleteAProduct(int id)

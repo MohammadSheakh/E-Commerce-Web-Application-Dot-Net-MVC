@@ -293,6 +293,8 @@
     <Content Include="Views\Product\addProduct.cshtml" />
     <Content Include="Views\Product\showAllProductsDetails.cshtml" />
     <Content Include="Views\Product\showOneProductDetails.cshtml" />
+    <Content Include="Views\Product\updateOneProductDetails.cshtml" />
+    <Content Include="Views\Product\deleteProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
