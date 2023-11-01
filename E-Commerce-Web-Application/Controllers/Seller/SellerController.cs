@@ -5,6 +5,7 @@ using E_Commerce_Web_Application.DTOs.Seller;
 using E_Commerce_Web_Application.EF;
 // using E_Commerce_Web_Application.EF;
 using E_Commerce_Web_Application.Helper.Converter;
+using E_Commerce_Web_Application.Helper.CustomAttribute.Auth;
 //using E_Commerce_Web_Application.Helper.Converter;
 using System;
 using System.Collections.Generic;
@@ -66,6 +67,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
 
         // Show All Sellers Details [Get]  X
 
+        [SellerAuthGuard]
         [HttpGet] // View with DTO - status [working]
         public ActionResult showAllSellersDetails()
         {
@@ -146,7 +148,6 @@ namespace E_Commerce_Web_Application.Controllers.Seller
                         return View(sellerLoginDto); 
                     }
 
-                    
                 }
                 else
                 {
@@ -159,15 +160,112 @@ namespace E_Commerce_Web_Application.Controllers.Seller
             return View(sellerLoginDto);
         }
 
+
         // Seller Account Details [Get]   <- Seller
+        [HttpGet] // View with DTO - status [working]
+        public ActionResult showOneSellerDetails(int? id = 1)
+        {
+            var db = new Entities3();
+            
+            var dataFromDB = (from seller in db.Sellers
+                        where seller.id == id
+                        select seller).SingleOrDefault();
 
+            var autoMapper = new AutoMapperConverter();
+            var convertedSeller = autoMapper.ConvertForSingleInstance<EF.Seller, SellerDTO>(dataFromDB);
+            return View(convertedSeller);
+        }
+
+        [SellerAuthGuard]
         // update Seller Account Details [Get] <- Seller
-        // update Seller Account Details [Post] <- Seller
 
+        [HttpGet] // View with DTO - status [working]
+        public ActionResult updateSellerAccountDetails(int? id)
+        {
+
+            var db = new Entities3();
+            //First LINQ ..
+            var dataFromDB = (from seller in db.Sellers
+                              where seller.id == id
+                              select seller).SingleOrDefault();
+
+            var autoMapper = new AutoMapperConverter();
+
+            // lets try with ConvertForSingleInstance
+            var convertedSeller = autoMapper.ConvertForSingleInstance<EF.Seller, SellerDTO>(dataFromDB);
+            //return View(data);
+            return View(convertedSeller);
+        }
+        
+
+        [SellerAuthGuard]
+        // update Seller Account Details [Post] <- Seller
+        [HttpPost] // View with DTO - status [working]
+        public ActionResult updateSellerAccountDetails(SellerDTO sellerDto)
+        {
+            // 🔗🔰 accha ekhane ki modelstate.isvalid kora lagbe na ? 
+            var db = new Entities3();
+            
+            var extractSeller = db.Sellers.Find(sellerDto.id);
+            
+            var autoMapper = new AutoMapperConverter();
+
+            // lets use AutoMapper 
+            db.Entry(extractSeller).CurrentValues.SetValues(autoMapper.ConvertForSingleInstance<SellerDTO, EF.Seller>(sellerDto));
+
+            db.SaveChanges();
+
+            //return RedirectToAction("showOneSellerDetails"); // id pass korte hobe 
+            return RedirectToAction("showAllSellersDetails");
+        }
+
+        // 🔰🔗 Guard ki GET and POST duita controller er agei use korte hobe ?
+
+        [SellerAuthGuard]
         // Delete Account [Get] <- Seller
+        [HttpGet]
+        public ActionResult deleteAccount(int? id)
+        {
+
+            var db = new Entities3();
+            var seller = db.Sellers.Find(id);
+            // retriving done 
+            if (seller == null)
+            {
+                // ⚫🔗🔰 ProductNotFound Page create korte hobe 
+                // return RedirectToAction("ProductNotFound");
+                return RedirectToAction("showAllSellersDetails");
+            }
+            // if product is found
+            return View(seller);
+        }
+
+        [SellerAuthGuard]
         // Delete Account [Post] <- Seller
 
+        [HttpPost]
+        
+        public ActionResult deleteAccount(int id)
+        {
+            var db = new Entities3();
+            //First LINQ ..
+            var sellerFound = (from seller in db.Sellers
+                                where seller.id == id
+                                select seller).SingleOrDefault();
 
+            //var extractProduct = db.Products.Find(productFound.id);
+
+            if (sellerFound == null)
+            {
+                return RedirectToAction("SellerNotFound");
+            }
+            //return RedirectToAction("SellerNotFound");
+
+            db.Sellers.Remove(sellerFound);
+            db.SaveChanges();
+
+            return RedirectToAction("showAllSellersDetails");
+        }
 
     }
 }

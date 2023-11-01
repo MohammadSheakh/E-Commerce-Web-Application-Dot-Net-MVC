@@ -209,6 +209,7 @@
     </Compile>
     <Compile Include="Helper\Converter\AutoMapperConverter.cs" />
     <Compile Include="Helper\Converter\ManualConverter.cs" />
+    <Compile Include="Helper\CustomAttribute\Auth\SellerAuthGuard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -317,6 +318,8 @@
     <Content Include="Views\Seller\CreateSellerAccount.cshtml" />
     <Content Include="Views\Seller\showAllSellersDetails.cshtml" />
     <Content Include="Views\Seller\sellerLogin.cshtml" />
+    <Content Include="Views\Seller\showOneSellerDetails.cshtml" />
+    <Content Include="Views\Seller\updateSellerAccountDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,140 @@
+﻿@model E_Commerce_Web_Application.DTOs.SellerDTO
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>showOneSellerDetails</title>
+</head>
+<body>
+    <div>
+        <h4>SellerDTO</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.emailAddress)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.emailAddress)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.password)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.password)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.phoneNumber)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.phoneNumber)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.image)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.image)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.shopName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.shopName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.shopDescription)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.shopDescription)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.shopLogo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.shopLogo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.status)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.rating)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.rating)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.offlineShopAddress)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.offlineShopAddress)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.googleMapLocation)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.googleMapLocation)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.createdAt)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.createdAt)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "updateSellerAccountDetails", new { id = Model.id }) |
+        @Html.ActionLink("Delete", "deleteAccount", new { id = Model.id }) |
+       
+        @Html.ActionLink("Back to List", "showAllSellersDetails")
+    </p>
+</body>
+</html>
