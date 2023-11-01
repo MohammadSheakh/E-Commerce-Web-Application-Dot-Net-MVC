@@ -7,10 +7,21 @@ namespace E_Commerce_Web_Application.DTOs
 {
     public class SellerDTO
     {
+        /*
+         * ============status==============
+            Active = 'Active',
+            Inactive = 'Inactive',
+            Suspended = 'Suspended',
+            LocalSeller = 'Local Seller',
+            VerifiedSeller = 'Verified Seller',
+            PremiumSupportSeller = 'Premium Support Seller',
+            BestSeller = 'Top Seller',
+            TopSeller = 'Top Seller',
+         */
         public int id { get; set; }
         public string name { get; set; }
         public string emailAddress { get; set; }
-        public string password { get; set; }
+        public byte[] password { get; set; } // not sure .. for hassed password
         public string phoneNumber { get; set; }
         public string description { get; set; }
         public string image { get; set; }

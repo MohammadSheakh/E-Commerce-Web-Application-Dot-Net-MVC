@@ -2,6 +2,7 @@
 using AutoMapper;
 using E_Commerce_Web_Application.DTOs;
 using E_Commerce_Web_Application.EF;
+using E_Commerce_Web_Application.Helper.Converter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -147,8 +148,12 @@ namespace E_Commerce_Web_Application.Controllers.Seller
                 // Receive kortesi ProductDTO 
                 // to ProductDTO -> Product 
                 // convert korte hobe ..  
-                db.Products.Add(Convert(product));
+                // ///db.Products.Add(Convert(product));
 
+                // nijer banano class theke niye ashlam 
+                var autoMapper = new AutoMapperConverter();
+                //🔗🔰AutoMapper Use korte hobe .. 
+                db.Products.Add(autoMapper.ConvertForSingleInstance<ProductDTO, Product>(product));
 
                 db.SaveChanges();
                 return RedirectToAction("showAllProductsDetails");
