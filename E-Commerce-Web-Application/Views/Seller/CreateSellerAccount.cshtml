@@ -41,7 +41,7 @@
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })*@
                 
-                <input type="text" name="password" value="@(Model==null ? "": System.Text.Encoding.UTF8.GetString(Model.password))" />
+                <input type="text" name="password" value="@(Model==null ? "":Model.password)" />
                 
                 @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
             </div>
@@ -177,7 +177,7 @@
     }
     
     <div>
-        @Html.ActionLink("Back to Login Form", "CreateSellerAccount")
+        @Html.ActionLink("Back to Login Form", "sellerLogin")
     </div>
 </body>
 </html>

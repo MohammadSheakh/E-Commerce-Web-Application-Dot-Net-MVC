@@ -164,6 +164,7 @@
     <Compile Include="DTOs\Product\ProductDTO.cs" />
     <Compile Include="DTOs\Seller\SellerDTO.cs" />
     <Compile Include="DTOs\Product\SellerProductsDTO.cs" />
+    <Compile Include="DTOs\Seller\SellerLoginDTO.cs" />
     <Compile Include="EF\Brand.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -315,6 +316,7 @@
     <Content Include="Views\Product\deleteProduct.cshtml" />
     <Content Include="Views\Seller\CreateSellerAccount.cshtml" />
     <Content Include="Views\Seller\showAllSellersDetails.cshtml" />
+    <Content Include="Views\Seller\sellerLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

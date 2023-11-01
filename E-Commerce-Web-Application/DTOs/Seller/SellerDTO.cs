@@ -21,7 +21,7 @@ namespace E_Commerce_Web_Application.DTOs
         public int id { get; set; }
         public string name { get; set; }
         public string emailAddress { get; set; }
-        public byte[] password { get; set; } // not sure .. for hassed password
+        public string password { get; set; } // not sure .. for hassed password
         public string phoneNumber { get; set; }
         public string description { get; set; }
         public string image { get; set; }
