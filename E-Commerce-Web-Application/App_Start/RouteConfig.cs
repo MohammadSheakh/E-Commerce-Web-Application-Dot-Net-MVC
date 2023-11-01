@@ -14,7 +14,7 @@ namespace E_Commerce_Web_Application
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
+                name: "Seller",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Seller", action = "CreateSellerAccount", id = UrlParameter.Optional }
             );
@@ -32,7 +32,7 @@ namespace E_Commerce_Web_Application
             );
 
             routes.MapRoute(
-                name: "Home",
+                name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );

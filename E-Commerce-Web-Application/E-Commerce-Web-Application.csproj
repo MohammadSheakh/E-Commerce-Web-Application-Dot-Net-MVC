@@ -320,10 +320,12 @@
     <Content Include="Views\Seller\sellerLogin.cshtml" />
     <Content Include="Views\Seller\showOneSellerDetails.cshtml" />
     <Content Include="Views\Seller\updateSellerAccountDetails.cshtml" />
+    <Content Include="Views\Seller\deleteAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\Admin\" />
+    <Folder Include="Controllers\Common\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Buyer\" />
   </ItemGroup>

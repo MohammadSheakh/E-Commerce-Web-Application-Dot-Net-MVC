@@ -138,6 +138,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
                     {
                         Session["userId"] = user.id;
                         Session["userEmail"] = user.emailAddress;
+                        Session["userName"] = user.name;
                         Session["userType"] = "Seller";
                         // it means email and password is correct 
                         return RedirectToAction("showAllSellersDetails");

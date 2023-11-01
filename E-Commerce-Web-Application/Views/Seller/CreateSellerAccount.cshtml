@@ -1,7 +1,8 @@
 ﻿@model E_Commerce_Web_Application.DTOs.SellerDTO
 
 @{
-    Layout = null;
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -41,7 +42,7 @@
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })*@
                 
-                <input type="text" name="password" value="@(Model==null ? "":Model.password)" />
+                <input type="password" name="password" value="@(Model==null ? "":Model.password)" />
                 
                 @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
             </div>

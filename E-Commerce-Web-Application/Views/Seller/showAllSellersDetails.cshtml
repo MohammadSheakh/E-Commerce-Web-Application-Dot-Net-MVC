@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<E_Commerce_Web_Application.DTOs.SellerDTO>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -121,8 +121,9 @@
     <hr />
     <br />
 
-    @Session["userId"] 
-    @Session["userEmail"] 
-    @Session["userType"] 
+    @Session["userId"] ==
+    @Session["userEmail"] ==
+    @Session["userType"] ==
+    @Session["userName"]
 </body>
 </html>
