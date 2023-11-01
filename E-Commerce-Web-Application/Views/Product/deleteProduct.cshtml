@@ -1,7 +1,7 @@
 ﻿@model E_Commerce_Web_Application.EF.Product
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -97,15 +97,23 @@
                 @Html.DisplayFor(model => model.categoryId)
             </dd>
     
+            <dt>
+                @Html.DisplayNameFor(model => model.sellerId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sellerId)
+            </dd>
+    
         </dl>
     
         @using (Html.BeginForm()) {
             @Html.AntiForgeryToken()
     
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "showAllProductsDetails")
-            </div>
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "showAllProductsDetails")
+    </div>
         }
     </div>
 </body>

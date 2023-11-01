@@ -1,0 +1,26 @@
+﻿@model E_Commerce_Web_Application.DTOs.Seller.SellerLoginDTO
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>sellerLogin</title>
+</head>
+<body>
+    <div> 
+        <form action="" method="post">
+            <h5>Email Address : </h5>
+            <input type="text" name="emailAddress" value="@(Model==null ? "": Model.emailAddress)" />
+            <h5>Password : </h5>
+            <input type="password" name="password" value="@(Model==null ? "": Model.password)" />
+
+            <input type="submit" name="Submit" value="Submit" />
+        </form>
+    </div>
+</body>
+</html>

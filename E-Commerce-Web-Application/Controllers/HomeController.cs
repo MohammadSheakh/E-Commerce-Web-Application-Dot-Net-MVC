@@ -10,6 +10,7 @@ namespace E_Commerce_Web_Application.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Name = Session["userName"];
             return View();
         }
 
