@@ -19,115 +19,120 @@
             <dt>
                 @Html.DisplayNameFor(model => model.name)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.name)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.emailAddress)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.emailAddress)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.password)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.password)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.phoneNumber)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.phoneNumber)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.description)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.description)
             </dd>
-    
+
             <dt>
+                @*/////////////////////////////////////////////////*@
                 @Html.DisplayNameFor(model => model.image)
+
             </dt>
-    
+
             <dd>
-                @Html.DisplayFor(model => model.image)
+                @*@Html.DisplayFor(model => model.image)*@
+                <h5>image file path : @Model.image</h5>
+                <img src="~/Uploads/@Model.image" alt="Image Can not be shown from showOneSellerDetails view" />
+                @*/////////////////////////////////////////////////*@
             </dd>
-    
+            
             <dt>
                 @Html.DisplayNameFor(model => model.shopName)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.shopName)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.shopDescription)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.shopDescription)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.shopLogo)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.shopLogo)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.status)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.status)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.rating)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.rating)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.offlineShopAddress)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.offlineShopAddress)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.googleMapLocation)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.googleMapLocation)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.createdAt)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.createdAt)
             </dd>
-    
+
         </dl>
     </div>
     <p>

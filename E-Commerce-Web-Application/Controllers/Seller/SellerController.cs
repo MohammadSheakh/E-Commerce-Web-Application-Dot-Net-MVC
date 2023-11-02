@@ -9,6 +9,7 @@ using E_Commerce_Web_Application.Helper.CustomAttribute.Auth;
 //using E_Commerce_Web_Application.Helper.Converter;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -36,12 +37,39 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         }
         //2/ Create Seller Account [Post] <- Seller
         [HttpPost]
-        public ActionResult CreateSellerAccount(SellerDTO sellerDto)
+        public ActionResult CreateSellerAccount(SellerDTO sellerDto, HttpPostedFileBase image, HttpPostedFileBase shopLogo)
         {
             // after save those fields
             var db = new Entities3();
             if (ModelState.IsValid)
             {
+                if (image != null && image.ContentLength > 0)
+                {
+                    // Handle the image upload, save it to a specific folder
+                    var fileName = Path.GetFileName(image.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Uploads"), fileName);
+                   
+                    // Save the image to folder 
+                    //var fullPath = Server.MapPath(path);
+                    image.SaveAs(path);
+
+                    // save file name / path to DB 
+                    sellerDto.image = fileName;// 🔗🔰 only image name ki save kora lagbe naki only path ? 
+
+                }
+
+                if (shopLogo != null && shopLogo.ContentLength > 0)
+                {
+                    // Handle the image upload, save it to a specific folder
+                    var fileName = Path.GetFileName(shopLogo.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Uploads"), fileName);
+                    shopLogo.SaveAs(path);
+
+                    // save file path to DB 
+                    sellerDto.shopLogo = path;// 🔗🔰 only image name ki save kora lagbe naki only path ? 
+
+                }
+
                 sellerDto.createdAt = DateTime.Now;
                 // seller deowa password .. hash kore database e save korte hobe 
 

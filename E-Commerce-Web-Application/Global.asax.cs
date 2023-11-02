@@ -17,5 +17,6 @@ namespace E_Commerce_Web_Application
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        
     }
 }
