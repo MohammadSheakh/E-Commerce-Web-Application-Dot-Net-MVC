@@ -19,6 +19,14 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="CategoryBrand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="BrandId" Type="int" />
+        </EntityType>
         <EntityType Name="OrderItems">
           <Key>
             <PropertyRef Name="id" />
@@ -97,6 +105,30 @@
           <Property Name="phoneNumber" Type="varchar" MaxLength="50" />
           <Property Name="address" Type="varchar(max)" />
         </EntityType>
+        <Association Name="FK_CategoryBrand_Brands">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
+          <End Role="CategoryBrand" Type="Self.CategoryBrand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CategoryBrand">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryBrand_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="CategoryBrand" Type="Self.CategoryBrand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CategoryBrand">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OrderItems_Orders">
           <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
           <End Role="OrderItems" Type="Self.OrderItems" Multiplicity="*" />
@@ -184,12 +216,21 @@
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryBrand" EntityType="Self.CategoryBrand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItems" EntityType="Self.OrderItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sellers" EntityType="Self.Sellers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CategoryBrand_Brands" Association="Self.FK_CategoryBrand_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="CategoryBrand" EntitySet="CategoryBrand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryBrand_Categories" Association="Self.FK_CategoryBrand_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="CategoryBrand" EntitySet="CategoryBrand" />
+          </AssociationSet>
           <AssociationSet Name="FK_OrderItems_Orders" Association="Self.FK_OrderItems_Orders">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderItems" EntitySet="OrderItems" />
@@ -230,6 +271,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CategoryBrands" Relationship="Self.FK_CategoryBrand_Brands" FromRole="Brands" ToRole="CategoryBrand" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_Brands" FromRole="Brands" ToRole="Products" />
         </EntityType>
         <EntityType Name="Category">
@@ -238,7 +280,18 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CategoryBrands" Relationship="Self.FK_CategoryBrand_Categories" FromRole="Categories" ToRole="CategoryBrand" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories1" FromRole="Categories" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="CategoryBrand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="BrandId" Type="Int32" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_CategoryBrand_Brands" FromRole="CategoryBrand" ToRole="Brands" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_CategoryBrand_Categories" FromRole="CategoryBrand" ToRole="Categories" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -330,6 +383,18 @@
           <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_User" FromRole="User" ToRole="Orders" />
         </EntityType>
+        <Association Name="FK_CategoryBrand_Brands">
+          <End Role="Brands" Type="Self.Brand" Multiplicity="0..1" />
+          <End Role="CategoryBrand" Type="Self.CategoryBrand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CategoryBrand">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Products_Brands">
           <End Role="Brands" Type="Self.Brand" Multiplicity="0..1" />
           <End Role="Products" Type="Self.Product" Multiplicity="*" />
@@ -339,6 +404,18 @@
             </Principal>
             <Dependent Role="Products">
               <PropertyRef Name="brandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryBrand_Categories">
+          <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="CategoryBrand" Type="Self.CategoryBrand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CategoryBrand">
+              <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -417,15 +494,24 @@
         <EntityContainer Name="Entities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Brands" EntityType="Self.Brand" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="CategoryBrands" EntityType="Self.CategoryBrand" />
           <EntitySet Name="OrderItems" EntityType="Self.OrderItem" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Sellers" EntityType="Self.Seller" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_CategoryBrand_Brands" Association="Self.FK_CategoryBrand_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="CategoryBrand" EntitySet="CategoryBrands" />
+          </AssociationSet>
           <AssociationSet Name="FK_Products_Brands" Association="Self.FK_Products_Brands">
             <End Role="Brands" EntitySet="Brands" />
             <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryBrand_Categories" Association="Self.FK_CategoryBrand_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="CategoryBrand" EntitySet="CategoryBrands" />
           </AssociationSet>
           <AssociationSet Name="FK_Products_Categories1" Association="Self.FK_Products_Categories1">
             <End Role="Categories" EntitySet="Categories" />
@@ -471,6 +557,15 @@
               <MappingFragment StoreEntitySet="Categories">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryBrands">
+            <EntityTypeMapping TypeName="Model.CategoryBrand">
+              <MappingFragment StoreEntitySet="CategoryBrand">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
