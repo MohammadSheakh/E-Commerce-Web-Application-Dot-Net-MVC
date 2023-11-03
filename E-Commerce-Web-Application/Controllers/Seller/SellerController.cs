@@ -47,14 +47,27 @@ namespace E_Commerce_Web_Application.Controllers.Seller
                 {
                     // Handle the image upload, save it to a specific folder
                     var fileName = Path.GetFileName(image.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Uploads"), fileName);
+
+                    // lets manupulate file name for uniquness 
+                    // fileName theke extension alada kore nite hobe ..
+                    // date + name + extension ei format e save korte hobe 
+
+
+
+                    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+
+                    // Generate a unique file name by combining a GUID and the original file extension
+                    var uniqueFileName = fileNameWithoutExtension + Guid.NewGuid().ToString() + Path.GetExtension(fileName);
+
+
+                    var path = Path.Combine(Server.MapPath("~/Uploads"), uniqueFileName);
                    
                     // Save the image to folder 
                     //var fullPath = Server.MapPath(path);
                     image.SaveAs(path);
 
                     // save file name / path to DB 
-                    sellerDto.image = fileName;// 🔗🔰 only image name ki save kora lagbe naki only path ? 
+                    sellerDto.image = uniqueFileName;// 🔗🔰 only image name ki save kora lagbe naki only path ? 
 
                 }
 
@@ -168,6 +181,8 @@ namespace E_Commerce_Web_Application.Controllers.Seller
                         Session["userEmail"] = user.emailAddress;
                         Session["userName"] = user.name;
                         Session["userType"] = "Seller";
+                        Session["userImage"] = user.image;
+                        
                         // it means email and password is correct 
                         return RedirectToAction("showAllSellersDetails");
                     }
@@ -238,6 +253,13 @@ namespace E_Commerce_Web_Application.Controllers.Seller
             var extractSeller = db.Sellers.Find(sellerDto.id);
             
             var autoMapper = new AutoMapperConverter();
+            /*
+             * 🔰🔗
+                 image er nam niye .. sheta upload folder e thakle .. sheta remove kore dite hobe 
+                 // jehetu new file insert hobe .. 
+                 fileName same thakle remove korbo na .. 
+                 fileName different hoile remove kore .. new file insert korbo upload folder e 
+             */
 
             // lets use AutoMapper 
             db.Entry(extractSeller).CurrentValues.SetValues(autoMapper.ConvertForSingleInstance<SellerDTO, EF.Seller>(sellerDto));

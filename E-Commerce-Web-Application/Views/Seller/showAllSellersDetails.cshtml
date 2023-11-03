@@ -81,7 +81,9 @@
                     @Html.DisplayFor(modelItem => item.description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.image)
+                    @*@Html.DisplayFor(modelItem => item.image)*@
+                    <img class="w-100 rounded-2" src="~/Uploads/@item.image" alt="Image Can not be shown from showAllSellerDetails view" />
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.shopName)

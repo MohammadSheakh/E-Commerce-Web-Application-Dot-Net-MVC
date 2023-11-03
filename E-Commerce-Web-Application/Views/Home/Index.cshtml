@@ -3,8 +3,54 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <main>
-    
+    @*// Right Side Navbar
+
+        // Banner
+        // Search Field
+        // Category
+        // Information Box*@
+
+    <div class="container text-center">
+        <div class="row align-items-start">
+            <div class="col-2 border border-1">
+                @{
+                    // Right Side Navbar Component
+                    Html.RenderPartial("_MainCategory");
+                }
+            </div>
+            <div class="col-8 border border-1">
+                @{
+                    // Banner Component
+
+                    Html.RenderPartial("Component/Home/_Banner");
+                    // Search Field 
+                    Html.RenderPartial("Component/Common/_SearchField");
+                    // Category
+                    Html.RenderPartial("Component/Common/_Category");
+               }
+            </div>
+            <div class="col-2 border border-1 overflow-hidden">
+                @*
+                        // Information Box
+                *@
+                @{ 
+                    Html.RenderPartial("Component/Home/_Information");
+                }
+            </div>
+        </div>
+
+        <div>
+            @*// Product Category gula show korbo ..*@
+            @{
+                Html.RenderPartial("Component/Common/Product/_ProductCategory");
+
+                Html.RenderPartial("Component/Common/Product/_ProductCategory");
+            }
+
+        </div>
+    </div>
 </main>
 
 
