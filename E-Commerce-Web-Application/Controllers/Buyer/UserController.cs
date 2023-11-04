@@ -76,10 +76,14 @@ namespace E_Commerce_Web_Application.Controllers.Buyer
 
 
                 cart.Add(data);
+                int cartCount = Convert.ToInt32(Session["CartCount"]);
+                Session["CartCount"] = cartCount + 1;
 
                 Session["key"] = cart;
             }
-            return RedirectToAction("showAllProductsDetails");
+            // return RedirectToAction("showAllProductsDetails");
+            
+            return RedirectToAction("Index", "Home");
         }
 
         //[ActionName("s")]
@@ -97,7 +101,11 @@ namespace E_Commerce_Web_Application.Controllers.Buyer
         {
             cart.Clear();
             Session["key"] = cart;
-            return RedirectToAction("showAllProductsDetails");
+
+            Session["CartCount"] = 0;
+
+            //return RedirectToAction("showAllProductsDetails");
+            return RedirectToAction("Index", "Home");
         }
         [HttpGet]
         public ActionResult placeOrder()

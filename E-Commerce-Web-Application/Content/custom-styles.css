@@ -1,0 +1,18 @@
+﻿:root {
+    --deepGreen-color: #2A4641;
+    --lightBlue-color: #628EB5;
+    --success-color: #28A745;
+    --danger-color: #DC3545;
+    --info-color: #17A2B8;
+    --warning-color: #FFC107;
+    
+}
+
+.custom-deep-green-color {
+    background-color: var(--deepGreen-color);
+}
+
+
+.custom-light-blue-color {
+    background-color: var(--lightBlue-color);
+}

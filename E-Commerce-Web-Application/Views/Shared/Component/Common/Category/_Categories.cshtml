@@ -1,0 +1,33 @@
+﻿<div style="" class="border border-1">
+    @*overflow-block:hidden;*@
+
+    @*Category*@ 
+    <div class="d-flex flex-row flex-wrap gap-2 justify-content-center align-content-center">
+        @*// lets pull Categories from Database*@
+
+        @foreach (var category in ViewBag.Categories)
+        {
+            ViewData["Category"] = category.name;
+
+            
+
+           Html.RenderPartial("Component/Common/Category/_SingleCategory");
+        }
+
+            @{
+                //Html.RenderPartial("Component/Common/Category/_SingleCategory");
+                //Html.RenderPartial("Component/Common/Category/_SingleCategory");
+                //Html.RenderPartial("Component/Common/Category/_SingleCategory");
+                //Html.RenderPartial("Component/Common/Category/_SingleCategory");
+                //Html.RenderPartial("Component/Common/Category/_SingleCategory");
+                //Html.RenderPartial("Component/Common/Category/_SingleCategory");
+
+                //Html.RenderPartial("Component/Common/Category/_SingleCategory");
+                //Html.RenderPartial("Component/Common/Category/_SingleCategory");
+                //Html.RenderPartial("Component/Common/Category/_SingleCategory");
+                //Html.RenderPartial("Component/Common/Category/_SingleCategory");
+                //Html.RenderPartial("Component/Common/Category/_SingleCategory");
+                //Html.RenderPartial("Component/Common/Category/_SingleCategory");
+            }
+    </div>
+</div>

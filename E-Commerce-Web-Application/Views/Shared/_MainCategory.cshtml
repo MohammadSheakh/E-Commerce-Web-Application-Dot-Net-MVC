@@ -1,0 +1,132 @@
+﻿@*<div style="width: 200px;" class="m-lg-3  h-100 bg-primary border-1 rounded-3">
+        d
+    </div>*@
+
+@model List<E_Commerce_Web_Application.EF.CategoryBrand>
+
+
+<div class="border border-1">
+    @*Value must be Come From Database .. //Not sure but Lets see*@
+    <div class="list-group">
+
+
+
+
+
+        <!-- split button -->
+        @*<div class="btn-group">
+            <button type="button" class="btn btn-danger ">=</button>
+            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+        </div>*@
+
+
+
+        @foreach (var category in ViewBag.Categories)
+        {
+            <div class="btn-group">
+
+                <button type="button" class="btn btn-danger ">@category.name</button>
+                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    @foreach (var categoryBrand in Model)
+                    {
+                        if (category.id == categoryBrand.CategoryId)
+                        {
+                            foreach (var brand in ViewBag.Brands)
+                            {
+                                if (brand.id == categoryBrand.BrandId)
+                                {
+                                    <li><a class="dropdown-item" href="#">@brand.name</a></li>
+                                }
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @*<a href="#" class="list-group-item list-group-item-action">A third link item</a>*@
+
+
+
+        @*<a href="#" class="list-group-item list-group-item-action">A third link item</a>*@
+
+    </div>
+
+</div>
+
+
+
+@*<div class="dropdown list-group-item">
+        <button id="dropDown-2" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button 2
+        </button>
+        <ul class="dropdown-menu" area-labelledby="dropDown-2">
+            <li><a class="dropdown-item" href="#">Action 4</a></li>
+            <li><a class="dropdown-item" href="#">action 5</a></li>
+
+        </ul>
+    </div>*@
+
+
+
+
+<!--<button type="button" class="btn btn-danger">Category name</button>
+
+    foreach (var Categories in ViewBag.Categories)
+    {
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger">Categories.name</button>
+            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+            </button>-->
+            @*<p>@Categories.name</p>*@
+            <!--foreach (var CategoryBrand in Model)// Model is CategoryBrand
+            {
+                if (Categories.id == CategoryBrand.CategoryId)
+                {
+                    <ul class="dropdown-menu">-->
+
+                        @*// Loop throw Brand Name*@
+                        <!--foreach (var Brand in ViewBag.Brands)
+                        {
+                            if (Brand.id == CategoryBrand.BrandId)
+                            {-->
+                                @*<li><a class="dropdown-item" href="#">@Brand.name</a></li>*@
+                                <!--<p>Brand.name</p>-->
+                                @*// Print Brand name*@
+                            <!--}
+                        }
+                    </ul>
+
+                }
+
+            }
+        </div>
+    }
+}-->

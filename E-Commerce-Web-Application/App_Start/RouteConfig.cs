@@ -14,28 +14,30 @@ namespace E_Commerce_Web_Application
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Seller",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Seller", action = "CreateSellerAccount", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "Product",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Product", action = "showAllProductsDetails", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "User",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "User", action = "Index", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            //routes.MapRoute(
+            //    name: "Seller",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Seller", action = "CreateSellerAccount", id = UrlParameter.Optional }
+            //);
+
+            //routes.MapRoute(
+            //    name: "Product",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Product", action = "showAllProductsDetails", id = UrlParameter.Optional }
+            //);
+
+            //routes.MapRoute(
+            //    name: "User",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "User", action = "Index", id = UrlParameter.Optional }
+            //);
+
+            
         }
     }
 }
