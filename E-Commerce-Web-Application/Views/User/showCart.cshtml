@@ -28,7 +28,7 @@
             {
                 foreach (var item in Model)
                 {
-                    
+
                     <tr>
                         <td>@item.id</td>
                         <td>@item.name</td>
@@ -40,9 +40,10 @@
 
         </table>
 
-
+        @Html.ActionLink("Clear Cart", "clearCart")
         @Html.ActionLink("Place Order", "placeOrder")
-        @Html.ActionLink("Back To Product List", "showAllProductsDetails")
+        @*        @Html.ActionLink("Back To Product List", "showAllProductsDetails")*@
+        @Html.ActionLink("Back To Product List", "Index", "Home")
 
 
     </div>

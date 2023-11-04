@@ -29,13 +29,13 @@ namespace E_Commerce_Web_Application.Controllers
 
         public ActionResult logout()
         {
-            Session["userid"] = "";
-            Session["useremail"] = "";
-            Session["username"] = "";
-            Session["usertype"] = "";
-            Session["userimage"] = "";
+            //Session["userid"] = "";
+            //Session["useremail"] = "";
+            //Session["username"] = "";
+            //Session["usertype"] = "";
+            //Session["userimage"] = "";
             Session.Clear();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult About()
         {

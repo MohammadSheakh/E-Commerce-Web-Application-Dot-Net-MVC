@@ -44,7 +44,7 @@
                     </li>
                     <li style="color: aliceblue" class="nav-link">@Session["userName"]</li>
                     @*<li style="color: aliceblue" class="nav-link">@Session["userId"]</li>
-                        <li style="color: aliceblue" class="nav-link">@Session["userEmail"]</li>*@
+        <li style="color: aliceblue" class="nav-link">@Session["userEmail"]</li>*@
 
 
                     @if (Session["userId"] == null)
@@ -73,6 +73,19 @@
 
 
                     }
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="User/showCart">
+
+                            Cart(
+                            @if(Session["CartCount"] != null)
+                            {
+                                <Span>@Session["CartCount"]</Span> 
+                            }
+
+                            )
+                        </a>
+                    </li>
 
                 </ul>
             </div>
