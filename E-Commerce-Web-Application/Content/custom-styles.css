@@ -1,15 +1,18 @@
 ﻿:root {
-    --primary-color: #2A4641;
-    --secondary-color: #0069D9;
+    --deepGreen-color: #2A4641;
+    --lightBlue-color: #628EB5;
     --success-color: #28A745;
     --danger-color: #DC3545;
     --info-color: #17A2B8;
     --warning-color: #FFC107;
-    -Dd 
+    
 }
 
 .custom-deep-green-color {
-    /*background-color: #2A4641; */
-    /* Your custom hex color code */
-    background-color: var(--primary-color);
+    background-color: var(--deepGreen-color);
+}
+
+
+.custom-light-blue-color {
+    background-color: var(--lightBlue-color);
 }

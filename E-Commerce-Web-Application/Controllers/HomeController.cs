@@ -27,6 +27,16 @@ namespace E_Commerce_Web_Application.Controllers
             return View(CategoryBrandFromDB); // DTO ? 🔰🔗
         }
 
+        public ActionResult logout()
+        {
+            Session["userid"] = "";
+            Session["useremail"] = "";
+            Session["username"] = "";
+            Session["usertype"] = "";
+            Session["userimage"] = "";
+            Session.Clear();
+            return RedirectToAction("Index");
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

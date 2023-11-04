@@ -45,15 +45,16 @@
                 </div>
             </div>
 
-            <div>
+            <div style="margin-top: 20px;">
                 @*// Product Category gula show korbo ..*@
                 @{
                     var viewData2 = new ViewDataDictionary();
+                    viewData2.Add("Categories", ViewBag.Categories);
                     viewData2.Add("Products", ViewBag.Products);
+                    viewData2.Add("Brands", ViewBag.Brands);
+                    Html.RenderPartial("Component/Common/Product/_ProductCategory", viewData2);
 
-                    Html.RenderPartial("Component/Common/Product/_ProductCategory", viewData2 );
-
-                    Html.RenderPartial("Component/Common/Product/_ProductCategory");
+                    //Html.RenderPartial("Component/Common/Product/_ProductCategory");
                 }
 
             </div>

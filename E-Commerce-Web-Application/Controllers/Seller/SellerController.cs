@@ -184,7 +184,7 @@ namespace E_Commerce_Web_Application.Controllers.Seller
                         Session["userImage"] = user.image;
                         
                         // it means email and password is correct 
-                        return RedirectToAction("showAllSellersDetails");
+                        return RedirectToAction("../Home/index");
                     }
                     else
                     {

@@ -1,3 +1,66 @@
-﻿<div class="border border-1">
-    Product Card
+﻿
+@model E_Commerce_Web_Application.EF.Product
+@{
+    var product = ViewData["Product"] as E_Commerce_Web_Application.EF.Product;
+}
+
+<div class="border border-1">
+    
+    @*@product.name*@
+
+    @*Lets Design Single Product Card*@ 
+
+    <div class="card" style="width: 200px; height:300px;">
+        <div style="height: 120px; object-fit:cover; overflow-block: hidden;">
+            @*// for image*@
+            <img   src="~/Content/images/home/Products/@product.productImage" class="card-img-top" alt="...">
+            
+        </div>
+        <div style="height: 150px; overflow-block: scroll;" class="card-body">
+            <div>
+                @*// Card Title*@
+                <h5 class="card-title" style="font-size:18px; display:flex; justify-content:space-between; ">
+                    <a href="Product/showOneProductDetails/@product.id">@product.name</a>
+                    @*// dropdown Btn*@
+
+                    <a class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @*dropdown Icon*@
+
+                        </a>
+                        <ul class="dropdown-menu">
+                            @if (Session["userType"] == "Seller")
+                            {
+                                <li><a class="dropdown-item" href="Product/updateOneProductDetails/@product.id">Update Details</a></li>
+                                <li><a class="dropdown-item text-danger" href="Product/deleteProduct/@product.id">Delete</a></li>
+
+                            }
+                            @if (Session["userType"] == "User")
+                            {
+                                <li><a class="dropdown-item" href="#">Add To Cart</a></li>
+                                <li><a class="dropdown-item" href="#">Add To WishList</a></li>
+                            }
+
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">New Option</a></li>
+                        </ul>
+                    </a>
+                </h5>
+                
+            </div>
+            <div class="d-flex justify-content-between">
+                @*// for price and status*@ 
+                <h6>৳@product.price</h6>
+                <div> Trending </div>
+                <div>Limited Stock</div>
+
+            </div>
+
+            @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+
+
 </div>
