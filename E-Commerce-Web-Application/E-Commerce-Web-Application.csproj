@@ -234,6 +234,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\custom-styles.css" />
     <Content Include="Content\images\home\banner.png" />
+    <Content Include="Documentation\Seller\TextFile1.txt" />
     <Content Include="EF\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -335,6 +336,8 @@
     <Content Include="Views\Shared\Component\Common\Product\_ProductCategory.cshtml" />
     <Content Include="Views\Shared\Component\Common\Product\_ProductCard.cshtml" />
     <Content Include="Views\Shared\Component\Common\Category\_SingleCategory.cshtml" />
+    <Content Include="Views\Seller\SellerProfile.cshtml" />
+    <Content Include="Views\Shared\Component\Seller\_SubNavbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

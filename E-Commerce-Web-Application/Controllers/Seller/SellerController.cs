@@ -27,6 +27,42 @@ namespace E_Commerce_Web_Application.Controllers.Seller
             return View();
         }
 
+        [HttpGet]
+        public ActionResult SellerProfile(int? id = 1)
+        {
+
+
+            var db = new Entities3();
+
+            var dataFromDB = (from seller in db.Sellers
+                              where seller.id == id
+                              select seller).SingleOrDefault();
+
+            var autoMapper = new AutoMapperConverter();
+            var convertedSeller = autoMapper.ConvertForSingleInstance<EF.Seller, SellerDTO>(dataFromDB);
+            ViewBag.Seller = convertedSeller;
+
+
+            
+
+            var CategoriesFromDB = db.Categories.ToList();
+            ViewBag.Categories = CategoriesFromDB;
+
+            var BrandsFromDB = db.Brands.ToList();
+            ViewBag.Brands = BrandsFromDB;
+
+            var ProductsFromDB = db.Products.ToList();
+            ViewBag.Products = ProductsFromDB;
+
+
+            var CategoryBrandFromDB = db.CategoryBrands.ToList();
+
+
+
+            return View(CategoryBrandFromDB);
+            
+        }
+
         //1/ Create Seller Account [Get]  <-  Seller
         [HttpGet]
         public ActionResult CreateSellerAccount()
@@ -245,11 +281,61 @@ namespace E_Commerce_Web_Application.Controllers.Seller
         [SellerAuthGuard]
         // update Seller Account Details [Post] <- Seller
         [HttpPost] // View with DTO - status [working]
-        public ActionResult updateSellerAccountDetails(SellerDTO sellerDto)
+        public ActionResult updateSellerAccountDetails(SellerDTO sellerDto, HttpPostedFileBase image, HttpPostedFileBase shopLogo)
         {
             // 🔗🔰 accha ekhane ki modelstate.isvalid kora lagbe na ? 
             var db = new Entities3();
-            
+
+
+            if (image != null && image.ContentLength > 0)
+            {
+                // Handle the image upload, save it to a specific folder
+                var fileName = Path.GetFileName(image.FileName);
+
+                // lets manupulate file name for uniquness 
+                // fileName theke extension alada kore nite hobe ..
+                // date + name + extension ei format e save korte hobe 
+
+
+
+                string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+
+                // Generate a unique file name by combining a GUID and the original file extension
+                var uniqueFileName = fileNameWithoutExtension + Guid.NewGuid().ToString() + Path.GetExtension(fileName);
+
+
+                var path = Path.Combine(Server.MapPath("~/Uploads"), uniqueFileName);
+
+                // Save the image to folder 
+                //var fullPath = Server.MapPath(path);
+                image.SaveAs(path);
+
+                // save file name / path to DB 
+                sellerDto.image = uniqueFileName;// 🔗🔰 only image name ki save kora lagbe naki only path ? 
+
+            }
+
+            if (shopLogo != null && shopLogo.ContentLength > 0)
+            {
+                // Handle the image upload, save it to a specific folder
+                var fileName = Path.GetFileName(shopLogo.FileName);
+                var path = Path.Combine(Server.MapPath("~/Uploads"), fileName);
+                shopLogo.SaveAs(path);
+
+                // save file path to DB 
+                sellerDto.shopLogo = path;// 🔗🔰 only image name ki save kora lagbe naki only path ? 
+
+            }
+
+
+
+
+
+
+
+
+
+
             var extractSeller = db.Sellers.Find(sellerDto.id);
             
             var autoMapper = new AutoMapperConverter();

@@ -1,0 +1,2 @@
+﻿1. Seller er information update er shomoy new image upload kora hoile ..
+sheta session e update korte hobe .. other wise image navbar e show korbe na 

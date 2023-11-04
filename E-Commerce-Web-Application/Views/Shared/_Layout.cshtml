@@ -11,7 +11,7 @@
     
 </head><body>
     @*custom-deep-green-color*@
-    <nav class="navbar  custom-deep-green-color  navbar-expand-sm navbar-toggleable-sm navbar-dark ">
+    <nav class="navbar sticky-top custom-deep-green-color  navbar-expand-sm navbar-toggleable-sm navbar-dark ">
         @*bg-dark*@
         <div class="container">
             @Html.ActionLink("ABC E-Commerce", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -42,7 +42,10 @@
                         }
 
                     </li>
-                    <li style="color: aliceblue" class="nav-link">@Session["userName"]</li>
+                    <li style="color: aliceblue" class="nav-link">
+                        <a href="/Seller/SellerProfile/@Session["userid"]">@Session["userName"]</a>
+
+                    </li>
                     @*<li style="color: aliceblue" class="nav-link">@Session["userId"]</li>
         <li style="color: aliceblue" class="nav-link">@Session["userEmail"]</li>*@
 
@@ -64,28 +67,49 @@
                     }
                     else
                     {
-                        <li class="nav-item">
-                            <a class="nav-link " href="../Home/logout">
+                        @*<li class="nav-item">
+                            <a class="nav-link " href="/Home/logout">
 
                                 Logout
                             </a>
-                        </li>
-
-
+                        </li>*@
+                        <li>@Html.ActionLink("Logout", "logout", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        
                     }
 
-                    <li class="nav-item">
+                <li class="nav-item">
+                    @if (Convert.ToInt32(Session["CartCount"]) > 0)
+                    {
+
                         <a class="nav-link " href="User/showCart">
 
+
+
                             Cart(
-                            @if(Session["CartCount"] != null)
+                            @if (Session["CartCount"] != null)
                             {
-                                <Span>@Session["CartCount"]</Span> 
+                                <Span>@Session["CartCount"]</Span>
                             }
 
                             )
                         </a>
-                    </li>
+                        
+                    }
+                    else
+                    {
+                        <a class="nav-link " href="">
+
+                            Cart(
+                            @if (Session["CartCount"] != null)
+                            {
+                                <Span>@Session["CartCount"]</Span>
+                            }
+
+                            )
+                        </a>
+                        
+                    }
+                </li>
 
                 </ul>
             </div>
@@ -99,8 +123,12 @@
 
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="text-center">
+            @{
+                var date = @Convert.ToInt32(@DateTime.Now.Year) + 1;
+
+            }
+            <p>&copy; @DateTime.Now.Year - @date - Advance Web Tech</p>
         </footer>
     </div>
 

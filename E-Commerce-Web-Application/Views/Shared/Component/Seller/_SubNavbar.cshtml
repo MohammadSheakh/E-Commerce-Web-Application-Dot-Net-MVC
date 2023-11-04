@@ -1,0 +1,54 @@
+﻿<nav class="navbar sticky-top custom-deep-green-color  navbar-expand-sm navbar-toggleable-sm navbar-dark ">
+    @*bg-dark*@
+    <div class="container">
+        
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between  ">
+            <ul class="navbar-nav flex-grow-1 justify-content-center">
+                @*Display Name, Method Name ,  Action name*@
+
+                <li style="color: aliceblue" class="nav-link">
+                    <a style="text-decoration:none; color: white;" href="/Seller/SellerProfile/@Session["userid"]">Personal Details</a>
+                </li>
+
+                <li style="color: aliceblue" class="nav-link">
+                    <a style="text-decoration:none; color: white;" href="/Seller/ShowAllProducts/@Session["userid"]">Products</a>
+                </li>
+
+                <li style="color: aliceblue" class="nav-link">
+                    <a style="text-decoration:none; color: white;" href="/Seller/ShowAllCategory/@Session["userid"]">Category</a>
+                </li>
+
+                <li style="color: aliceblue" class="nav-link">
+                    <a style="text-decoration:none; color: white;" href="/Seller/ShowAllBrands/@Session["userid"]">Brands</a>
+                </li>
+
+                <li style="color: aliceblue" class="nav-link">
+                    <a style="text-decoration:none; color: white;" href="/Seller/Statistics/@Session["userid"]">Statistics</a>
+                </li>
+
+                <li style="color: aliceblue" class="nav-link">
+                    <a style="text-decoration:none; color: white;" href="/Seller/ShowAllReview/@Session["userid"]">Review</a>
+                </li>
+
+                <li style="color: aliceblue" class="nav-link">
+                    <a style="text-decoration:none; color: white;" href="/Seller/ShowAllConversation/@Session["userid"]">Conversation</a>
+                </li>
+
+
+
+                @*<li>@Html.ActionLink("Personal Details", "SellerProfile", "Seller", new { area = "" }, new { @class = "nav-link" })</li>*@
+                @*<li>@Html.ActionLink("Products", "ShowAllProducts", "Seller", new { area = "" }, new { @class = "nav-link" })</li>*@
+                @*<li>@Html.ActionLink("Category", "ShowAllCategory", "Seller", new { area = "" }, new { @class = "nav-link" })</li>*@
+                @*<li>@Html.ActionLink("Brands", "ShowAllBrands", "Seller", new { area = "" }, new { @class = "nav-link" })</li>*@
+                @*<li>@Html.ActionLink("Statistics", "Statistics", "Seller", new { area = "" }, new { @class = "nav-link" })</li>*@
+                @*<li>@Html.ActionLink("Review", "ShowAllReview", "Seller", new { area = "" }, new { @class = "nav-link" })</li>*@
+                @*<li>@Html.ActionLink("Conversation", "ShowAllConversation", "Seller", new { area = "" }, new { @class = "nav-link" })</li>*@
+
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -29,7 +29,7 @@
 
                         </a>
                         <ul class="dropdown-menu">
-                            @if (Session["userType"] == "Seller")
+                            @if (Session["userType"] == "Seller" && product.sellerId == Convert.ToInt32(Session["userid"]))
                             {
                                 <li><a class="dropdown-item" href="Product/updateOneProductDetails/@product.id">Update Details</a></li>
                                 <li><a class="dropdown-item text-danger" href="Product/deleteProduct/@product.id">Delete</a></li>
